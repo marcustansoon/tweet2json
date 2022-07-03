@@ -12,12 +12,12 @@ class Tweet2JSON
         return $html;
     }
 
-    public function getJSON(string $name): array
+    public function getJSON(string $twitterName): array
     {
         // Get raw JSON from Twitter API
         $rawJSONContent = json_decode(
             file_get_contents(
-                "https://cdn.syndication.twimg.com/timeline/profile?screen_name=$name"
+                "https://cdn.syndication.twimg.com/timeline/profile?screen_name=$twitterName"
             ),
             true
         );
@@ -123,6 +123,7 @@ class Tweet2JSON
                 "timestamp" => $time,
                 "text" => $text,
                 "like-tweet-url" => $likeTweetURL,
+                "media" => $imageURLs,
                 "share-tweet-url-twitter" => $shareTweetURL_twitter,
                 "share-tweet-url-facebook" => $shareTweetURL_facebook,
                 "share-tweet-url-linkedin" => $shareTweetURL_linkedin,
@@ -135,5 +136,7 @@ class Tweet2JSON
 }
 
 // Example usage :
-var_dump(json_encode((new Tweet2JSON())->getJSON("TwitterDev")));
+echo "<pre>";
+echo json_encode((new Tweet2JSON())->getJSON("TwitterDev"), JSON_PRETTY_PRINT);
+echo "</pre>";
 ?>
