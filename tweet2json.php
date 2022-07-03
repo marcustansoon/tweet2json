@@ -1,5 +1,7 @@
 <?php
 
+libxml_use_internal_errors(true);
+
 class Tweet2JSON
 {
     private function innerHTML(\DOMElement $element): string
