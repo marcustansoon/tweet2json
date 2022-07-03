@@ -139,6 +139,6 @@ class Tweet2JSON
 
 // Example usage :
 echo "<pre>";
-echo json_encode((new Tweet2JSON())->getJSON("TwitterDev"), JSON_PRETTY_PRINT);
+echo json_encode((new Tweet2JSON)->getJSON("TwitterDev"), JSON_PRETTY_PRINT);
 echo "</pre>";
 ?>
