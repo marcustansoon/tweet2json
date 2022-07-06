@@ -1,8 +1,9 @@
-# tweet2json
+# tweet2json - No API required!
 
 ### Example Usage
 ```php
 <?php
+
 include "tweet2json.php";
 
 echo "<pre>";
