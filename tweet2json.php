@@ -24,7 +24,7 @@ class Tweet2JSON
             true
         );
 
-        // Make sure content is valid
+        // Make sure content is valid, else return empty array
         if (
             !boolval($rawJSONContent) ||
             $rawJSONContent["headers"]["status"] !== 200
@@ -37,10 +37,13 @@ class Tweet2JSON
 
         // Instantiate DOMDocument
         $doc = new DOMDocument();
+        
+        // Load raw HTML
         $doc->loadHTML($rawHTMLContent);
+        
+        // Get 'ol' html tags
         $tweetNodes = $doc->getElementsByTagName("ol")[0]->childNodes ?? [];
-
-        // Init
+        
         $tweets = [];
 
         foreach ($tweetNodes as $tweetNode) {
@@ -56,7 +59,7 @@ class Tweet2JSON
                 $temp->loadHTML($doc->saveHTML($tweetNode));
             $xpath = new DomXpath($temp);
 
-            // Get text
+            // Get raw text
             $text =
                 $xpath->query('//p[@class="timeline-Tweet-text"]')->item(0)
                     ->nodeValue ?? null;
@@ -117,7 +120,7 @@ class Tweet2JSON
                     $imageURLs[] =
                         $imageNode->getAttribute("data-image") .
                         "." .
-                        $imageNode->getAttribute("data-image-format");
+                        $imageNode->getAttribute("data-image-format"); // Image URL
                 }
             }
 
@@ -136,9 +139,4 @@ class Tweet2JSON
         return $tweets;
     }
 }
-
-// Example usage :
-echo "<pre>";
-echo json_encode((new Tweet2JSON)->getJSON("TwitterDev"), JSON_PRETTY_PRINT);
-echo "</pre>";
 ?>
