@@ -12,7 +12,7 @@ echo "</pre>";
 
 ?>
 ```
-### Reference Links :
+### Reference Links (Credits) :
 [Ref 1. Stackoverflow](https://stackoverflow.com/questions/71438223/twitter-embed-timeline-no-longer-works-as-of-today)
 <br>
 [Ref 2. Stackoverflow](https://stackoverflow.com/questions/53778331/is-there-a-way-to-get-public-tweets-of-a-user-without-using-the-twitter-develope)
