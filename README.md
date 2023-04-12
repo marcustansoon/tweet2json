@@ -1,4 +1,4 @@
-# tweet2json - No API required!
+# tweet2json - No API required! - Deprecated
 
 ### Example Usage
 ```php
